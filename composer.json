@@ -1,5 +1,5 @@
 {
-	"name": "antstudiocz/doctrine-magic-accessors",
+	"name": "blondak/doctrine-magic-accessors",
 	"type": "library",
 	"description": "Fast-prototyping magic accessors trait for Doctrine entities",
 	"keywords": ["kdyby", "doctrine", "orm", "dbal", "magic", "accessors"],
@@ -18,7 +18,7 @@
 	},
 	"require": {
 		"php": "^8.0",
-		"antstudiocz/doctrine-collections-readonly": "^2.0"
+		"blondak/doctrine-collections-readonly": "^2.0"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0",
