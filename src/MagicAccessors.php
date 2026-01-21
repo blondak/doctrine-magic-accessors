@@ -80,7 +80,7 @@ trait MagicAccessors
 			$op = substr($name, 0, 3);
 			$prop = strtolower($name[3]) . substr($name, 4);
 			if ($op === 'set' && isset($properties[$prop])) {
-				if ($this->$prop instanceof Collection) {
+				if (isset($this->$prop) && $this->$prop instanceof Collection) {
 					throw \Kdyby\Doctrine\MagicAccessors\UnexpectedValueException::collectionCannotBeReplaced($this, $prop);
 				}
 
@@ -89,7 +89,7 @@ trait MagicAccessors
 				return $this;
 
 			} elseif ($op === 'get' && isset($properties[$prop])) {
-				if ($this->$prop instanceof Collection) {
+			    if (isset($this->$prop) && $this->$prop instanceof Collection) {
 					return $this->convertCollection($prop);
 
 				} else {
@@ -353,7 +353,7 @@ trait MagicAccessors
 		$properties = $this->listObjectProperties();
 		$name = $originalName;
 		if (isset($properties[$name])) {
-			if ($this->$name instanceof Collection) {
+			if (isset($this->name) && $this->$name instanceof Collection) {
 				throw \Kdyby\Doctrine\MagicAccessors\UnexpectedValueException::collectionCannotBeReplaced($this, $name);
 			}
 
