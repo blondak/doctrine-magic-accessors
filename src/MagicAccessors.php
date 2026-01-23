@@ -353,7 +353,8 @@ trait MagicAccessors
 		$properties = $this->listObjectProperties();
 		$name = $originalName;
 		if (isset($properties[$name])) {
-			if (isset($this->name) && $this->$name instanceof Collection) {
+		    $reflectionProperty = new \ReflectionProperty($this, $name);
+			if ($reflectionProperty->isInitialized($this) && isset($this->$name) && $this->$name instanceof Collection) {
 				throw \Kdyby\Doctrine\MagicAccessors\UnexpectedValueException::collectionCannotBeReplaced($this, $name);
 			}
 
